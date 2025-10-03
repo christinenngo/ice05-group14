@@ -21,8 +21,9 @@ socketServer.on( 'connection', client => {
 
     // when the server receives a message from this client...
     client.on( 'message', msg => {
+        const text = msg.toString()
         // send msg to every client EXCEPT the one who originally sent it
-        clients.forEach( c => { if( c !== client ) c.send( msg ) })
+        clients.forEach( c => { if( c !== client ) c.send(text) })
     })
 
     // add client to client list
